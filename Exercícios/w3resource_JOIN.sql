@@ -83,6 +83,16 @@ SELECT c.cust_name, o.ord_no, s.name FROM salesman AS s
 JOIN customer AS c ON s.salesman_id  = c.salesman_id
 JOIN orders AS o ON o.customer_id = c.customer_id;
 
+/*14. Write a SQL statement to make a list for the salesmen who either work for one or more customers or yet to join any of the customer. 
+The customer may have placed, either one or more orders on or above order amount 2000 and must have a grade, or he may not have placed 
+any order to the associated supplier.*/
+
+SELECT c.cust_name, o.ord_no, o.purch_amt, s.name FROM salesman AS s
+JOIN customer AS c ON s.salesman_id  = c.salesman_id
+JOIN orders AS o ON o.customer_id = c.customer_id
+WHERE o.purch_amt > 2000 AND c.grade  IS NOT NULL
+ORDER BY c.cust_name;
+
 /*21. Write a SQL query to display all the data from the item_mast, including all the data for each item's producer company.*/
 
 SELECT * FROM item_mast AS i
