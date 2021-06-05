@@ -156,6 +156,13 @@ SELECT c.COM_NAME, AVG(i.PRO_PRICE) FROM item_mast AS i
 JOIN company_mast AS c ON i.PRO_COM = c.COM_ID
 GROUP BY c.COM_NAME HAVING AVG(i.PRO_PRICE) >= 350;
 
+/*25. Write a SQL query to display the name of each company along with the ID and price for their most expensive product.*/
+
+SELECT c.COM_NAME, i.PRO_NAME, i.PRO_PRICE FROM company_mast AS c
+JOIN item_mast AS i ON c.COM_ID = i.PRO_COM
+AND i.PRO_PRICE = (SELECT MAX(A.PRO_PRICE) FROM item_mast AS A
+WHERE A.PRO_COM = c.COM_ID);
+
 /*27. Write a query in SQL to display the first name and last name of each employee, along with the name and sanction amount for their department*/
 
 SELECT e.EMP_FNAME, e.EMP_LNAME, d.DPT_NAME, d.DPT_ALLOTMENT  
