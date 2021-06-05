@@ -8,6 +8,12 @@ JOIN company_mast AS c ON i.PRO_COM = c.COM_ID;
 SELECT i.PRO_NAME, i.PRO_PRICE, c.COM_NAME FROM item_mast AS i
 JOIN company_mast AS c ON i.PRO_COM = c.COM_ID;
 
+/*24. Write a SQL query to display the names of the company whose products have an average price larger than or equal to Rs. 350.*/
+
+SELECT c.COM_NAME, AVG(i.PRO_PRICE) FROM item_mast AS i
+JOIN company_mast AS c ON i.PRO_COM = c.COM_ID
+GROUP BY c.COM_NAME HAVING AVG(i.PRO_PRICE) >= 350;
+
 /*27. Write a query in SQL to display the first name and last name of each employee, along with the name and sanction amount for their department*/
 
 SELECT e.EMP_FNAME, e.EMP_LNAME, d.DPT_NAME, d.DPT_ALLOTMENT  
