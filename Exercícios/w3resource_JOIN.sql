@@ -1,3 +1,8 @@
+/*22. Write a SQL query to display the item name, price, and company name of all the products.*/
+
+SELECT i.PRO_NAME, i.PRO_PRICE, c.COM_NAME FROM item_mast AS i
+JOIN company_mast AS c ON i.PRO_COM = c.COM_ID;
+
 /*27. Write a query in SQL to display the first name and last name of each employee, along with the name and sanction amount for their department*/
 
 SELECT e.EMP_FNAME, e.EMP_LNAME, d.DPT_NAME, d.DPT_ALLOTMENT  
