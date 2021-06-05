@@ -1,3 +1,14 @@
+/*1. Write a SQL statement to prepare a list with salesman name, customer name and their cities for the salesmen and customer who belongs to the same city. */
+
+SELECT s.name, c.cust_name, s.city FROM salesman AS s 
+JOIN customer AS c ON s.city = c.city; 
+
+/*2. Write a SQL statement to make a list with order no, purchase amount, customer name and their cities for those orders which order amount between 500 and 2000.*/
+
+SELECT o.ord_no, o.purch_amt, c.cust_name, c.city  FROM orders AS o
+JOIN customer AS c ON o.customer_id = c.customer_id
+WHERE o.purch_amt BETWEEN 500 AND 2000; 
+
 /*12. Write a SQL statement to make a list in ascending order for the salesmen who works either for one or more customer or not yet join under any of the customers.*/
 
 SELECT s.name, c.cust_name FROM salesman AS s 
