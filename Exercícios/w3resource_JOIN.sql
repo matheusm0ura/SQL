@@ -1,3 +1,8 @@
+/*27. Write a query in SQL to display the first name and last name of each employee, along with the name and sanction amount for their department*/
+
+SELECT e.EMP_FNAME, e.EMP_LNAME, d.DPT_NAME, d.DPT_ALLOTMENT  
+FROM emp_department AS d 
+JOIN emp_details AS e ON d.DPT_CODE = e.EMP_DEPT;
 
 /*28. Write a query in SQL to find the first name and last name of employees working for departments with a budget more than Rs. 50000. */
 
