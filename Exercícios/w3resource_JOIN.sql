@@ -134,7 +134,6 @@ SELECT * FROM salesman AS s
 CROSS JOIN customer AS c
 where s.city IS NOT NULL AND s.city != c.city AND c.grade IS NOT NULL;
 
-
 /*21. Write a SQL query to display all the data from the item_mast, including all the data for each item's producer company.*/
 
 SELECT * FROM item_mast AS i
@@ -144,6 +143,12 @@ JOIN company_mast AS c ON i.PRO_COM = c.COM_ID;
 
 SELECT i.PRO_NAME, i.PRO_PRICE, c.COM_NAME FROM item_mast AS i
 JOIN company_mast AS c ON i.PRO_COM = c.COM_ID;
+
+/*23. Write a SQL query to display the average price of items of each company, showing the name of the company*/
+
+SELECT c.COM_NAME, AVG(i.PRO_PRICE) FROM company_mast AS c
+JOIN item_mast AS i ON c.COM_ID = i.PRO_COM
+GROUP BY c.COM_NAME;
 
 /*24. Write a SQL query to display the names of the company whose products have an average price larger than or equal to Rs. 350.*/
 
