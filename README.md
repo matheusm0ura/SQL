@@ -1,2 +1,2 @@
 # Exercícios da linguagem SQL
-Site das questões: https://www.w3resource.com/sql-exercises/sql-joins-exercises.php
+Link para os exercícios com JOIN: https://www.w3resource.com/sql-exercises/sql-joins-exercises.php
