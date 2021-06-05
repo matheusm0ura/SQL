@@ -54,6 +54,15 @@ SELECT c.cust_name, s.name FROM customer AS C
 JOIN salesman AS s ON c.salesman_id  = s.salesman_id
 WHERE c.grade < 300;
 
+/*10. Write a SQL statement to make a report with customer name, city, order number, order date, and order amount in ascending order 
+according to the order date to find that either any of the existing 
+customers have placed no order or placed one or more orders.*/
+
+SELECT c.cust_name, c. city, o.ord_no, o.ord_date, o.purch_amt 
+FROM orders AS o 
+JOIN customer as c ON c.customer_id = o.customer_id
+order by o.ord_date;
+
 /*12. Write a SQL statement to make a list in ascending order for the salesmen who works either for one or more customer or not yet join under any of the customers.*/
 
 SELECT s.name, c.cust_name FROM salesman AS s 
