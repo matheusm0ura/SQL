@@ -1,3 +1,8 @@
+/*21. Write a SQL query to display all the data from the item_mast, including all the data for each item's producer company.*/
+
+SELECT * FROM item_mast AS i
+JOIN company_mast AS c ON i.PRO_COM = c.COM_ID;
+
 /*22. Write a SQL query to display the item name, price, and company name of all the products.*/
 
 SELECT i.PRO_NAME, i.PRO_PRICE, c.COM_NAME FROM item_mast AS i
