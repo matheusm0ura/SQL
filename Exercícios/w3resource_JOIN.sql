@@ -1,3 +1,9 @@
+/*12. Write a SQL statement to make a list in ascending order for the salesmen who works either for one or more customer or not yet join under any of the customers.*/
+
+SELECT s.name, c.cust_name FROM salesman AS s 
+JOIN customer AS c ON s.salesman_id  = c.salesman_id 
+order by  s.salesman_id ; 
+
 /*21. Write a SQL query to display all the data from the item_mast, including all the data for each item's producer company.*/
 
 SELECT * FROM item_mast AS i
