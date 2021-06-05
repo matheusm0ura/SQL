@@ -74,7 +74,14 @@ JOIN salesman AS s ON s.salesman_id = c.salesman_id;
 
 SELECT s.name, c.cust_name FROM salesman AS s 
 JOIN customer AS c ON s.salesman_id  = c.salesman_id 
-order by  s.salesman_id ; 
+order by  s.salesman_id;
+
+/*13. Write a SQL statement to make a list for the salesmen who works either for one or more customer or not yet join under any 
+of the customers who placed either one or more orders or no order to their supplier.*/
+
+SELECT c.cust_name, o.ord_no, s.name FROM salesman AS s
+JOIN customer AS c ON s.salesman_id  = c.salesman_id
+JOIN orders AS o ON o.customer_id = c.customer_id;
 
 /*21. Write a SQL query to display all the data from the item_mast, including all the data for each item's producer company.*/
 
