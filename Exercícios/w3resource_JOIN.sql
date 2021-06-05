@@ -14,6 +14,27 @@ WHERE o.purch_amt BETWEEN 500 AND 2000;
 SELECT s. name, c.cust_name FROM salesman AS s
 JOIN customer AS c ON s.salesman_id = c.salesman_id; 
 
+/*4. Write a SQL statement to find the list of customers who appointed a salesman for their jobs who gets a commission from the company is more than 12%.*/
+
+SELECT c.cust_name, s.name FROM customer as c
+JOIN salesman as s ON c.salesman_id = s.salesman_id
+where s.commission  > 0.12 
+
+/*5. Write a SQL statement to find the list of customers who appointed a salesman for their jobs who does not live in the same city where their customer lives, 
+and gets a commission is above 12% .*/
+
+SELECT c.cust_name as "Customer Name", c.city "Customer city", s.name as "Seller Name", s.city as "Seller city" FROM customer as c
+JOIN salesman as s ON s.salesman_id = c.salesman_id
+where s.commission  > 0.12 and c.city != s.city;
+
+/*6. Write a SQL statement to find the details of a order i.e. order number, order date, amount of order, which customer gives 
+the order and which salesman works for that customer and how much commission he gets for an order.*/
+
+SELECT o.ord_no, o.ord_date, o.purch_amt, c.cust_name, s.name, s.commission
+FROM orders AS o 
+JOIN customer AS c ON o.customer_id = c.customer_id
+JOIN salesman as s ON s.salesman_id = c.salesman_id;
+
 /*12. Write a SQL statement to make a list in ascending order for the salesmen who works either for one or more customer or not yet join under any of the customers.*/
 
 SELECT s.name, c.cust_name FROM salesman AS s 
