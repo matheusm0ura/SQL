@@ -93,6 +93,27 @@ JOIN orders AS o ON o.customer_id = c.customer_id
 WHERE o.purch_amt > 2000 AND c.grade  IS NOT NULL
 ORDER BY c.cust_name;
 
+/*15. Write a SQL statement to make a report with customer name, city, order no. order date, purchase amount for those customers from the 
+existing list who placed one or more orders or which order(s) have been placed by the customer who is not on the list.*/
+
+SELECT c.cust_name, c.city, o.ord_no, o.ord_date, o.purch_amt
+FROM orders AS o 
+JOIN customer AS c ON o.customer_id = c.customer_id
+
+/*16. Write a SQL statement to make a report with customer name, city, order no. order date, purchase amount for only those customers on the list who 
+must have a grade and placed one or more orders or which order(s) have been placed by the customer who is neither in the list not have a grade.*/
+
+SELECT c.cust_name, c.city, o.ord_no, o.ord_date, o.purch_amt
+FROM customer AS c
+JOIN orders AS o  ON c.customer_id = o.customer_id
+WHERE c.grade IS NOT NULL;
+
+/*17. Write a SQL statement to make a cartesian product between salesman and customer i.e. each salesman will appear for all customer and vice versa.*/
+
+SELECT * FROM salesman
+CROSS JOIN customer;
+
+
 /*21. Write a SQL query to display all the data from the item_mast, including all the data for each item's producer company.*/
 
 SELECT * FROM item_mast AS i
