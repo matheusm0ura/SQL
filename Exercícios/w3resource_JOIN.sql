@@ -113,6 +113,27 @@ WHERE c.grade IS NOT NULL;
 SELECT * FROM salesman
 CROSS JOIN customer;
 
+/*18. Write a SQL statement to make a cartesian product between salesman and customer i.e. 
+each salesman will appear for all customer and vice versa for that salesman who belongs to a city. */
+
+SELECT * FROM salesman AS s
+CROSS JOIN customer AS c
+where s.city IS NOT NULL;
+
+/*19. Write a SQL statement to make a cartesian product between salesman and customer i.e. each salesman will appear for 
+all customer and vice versa for those salesmen who belongs to a city and the customers who must have a grade.*/
+
+SELECT * FROM salesman AS s
+CROSS JOIN customer AS c
+where s.city IS NOT NULL AND c.grade IS NOT NULL;
+
+/*20. Write a SQL statement to make a cartesian product between salesman and customer i.e. each salesman will appear for all customer and vice versa for those salesmen 
+who must belong a city which is not the same as his customer and the customers should have an own grade.*/
+
+SELECT * FROM salesman AS s
+CROSS JOIN customer AS c
+where s.city IS NOT NULL AND s.city != c.city AND c.grade IS NOT NULL;
+
 
 /*21. Write a SQL query to display all the data from the item_mast, including all the data for each item's producer company.*/
 
