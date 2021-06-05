@@ -46,7 +46,13 @@ NATURAL JOIN salesman;
 
 SELECT c.cust_name, s.name FROM customer AS C
 JOIN salesman AS s ON c.salesman_id  = s.salesman_id
-ORDER BY c.customer_id; 
+ORDER BY c.customer_id;
+
+/*9. Write a SQL statement to make a list in ascending order for the customer who holds a grade less than 300 and works either through a salesman or by own. */
+
+SELECT c.cust_name, s.name FROM customer AS C
+JOIN salesman AS s ON c.salesman_id  = s.salesman_id
+WHERE c.grade < 300;
 
 /*12. Write a SQL statement to make a list in ascending order for the salesmen who works either for one or more customer or not yet join under any of the customers.*/
 
