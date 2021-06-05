@@ -35,6 +35,19 @@ FROM orders AS o
 JOIN customer AS c ON o.customer_id = c.customer_id
 JOIN salesman as s ON s.salesman_id = c.salesman_id;
 
+/*7. Write a SQL statement to make a join on the tables salesman, customer and orders in such a 
+form that the same column of each table will appear once and only the relational rows will come.*/ 
+
+SELECT * from orders 
+NATURAL JOIN customer
+NATURAL JOIN salesman;
+
+/*8. Write a SQL statement to make a list in ascending order for the customer who works either through a salesman or by own.*/
+
+SELECT c.cust_name, s.name FROM customer AS C
+JOIN salesman AS s ON c.salesman_id  = s.salesman_id
+ORDER BY c.customer_id; 
+
 /*12. Write a SQL statement to make a list in ascending order for the salesmen who works either for one or more customer or not yet join under any of the customers.*/
 
 SELECT s.name, c.cust_name FROM salesman AS s 
