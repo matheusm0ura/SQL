@@ -9,6 +9,11 @@ SELECT o.ord_no, o.purch_amt, c.cust_name, c.city  FROM orders AS o
 JOIN customer AS c ON o.customer_id = c.customer_id
 WHERE o.purch_amt BETWEEN 500 AND 2000; 
 
+/*3. Write a SQL statement to know which salesman are working for which customer.*/
+
+SELECT s. name, c.cust_name FROM salesman AS s
+JOIN customer AS c ON s.salesman_id = c.salesman_id; 
+
 /*12. Write a SQL statement to make a list in ascending order for the salesmen who works either for one or more customer or not yet join under any of the customers.*/
 
 SELECT s.name, c.cust_name FROM salesman AS s 
