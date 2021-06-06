@@ -163,6 +163,11 @@ JOIN item_mast AS i ON c.COM_ID = i.PRO_COM
 AND i.PRO_PRICE = (SELECT MAX(A.PRO_PRICE) FROM item_mast AS A
 WHERE A.PRO_COM = c.COM_ID);
 
+/*26. Write a query in SQL to display all the data of employees including their department.*/
+
+SELECT A.EMP_IDNO, A.EMP_FNAME, A.EMP_LNAME, B.DPT_NAME FROM emp_details AS A
+JOIN emp_department AS B ON A.EMP_DEPT = B.DPT_CODE; 
+
 /*27. Write a query in SQL to display the first name and last name of each employee, along with the name and sanction amount for their department*/
 
 SELECT e.EMP_FNAME, e.EMP_LNAME, d.DPT_NAME, d.DPT_ALLOTMENT  
