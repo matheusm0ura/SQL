@@ -13,7 +13,16 @@ JOIN locations AS l ON l.LOCATION_ID = d.LOCATION_ID;
 
 /*4. Write a query in SQL to display the first name, last name, department number and department name, for all employees for departments 80 or 40.*/
 
+SELECT e.FIRST_NAME, e.LAST_NAME, d.DEPARTMENT_ID, d.DEPARTMENT_NAME FROM employees AS e 
+JOIN departments AS d USING(DEPARTMENT_ID)
+WHERE d.DEPARTMENT_ID IN (80, 40) ORDER BY first_name;
+
 /*5. Write a query in SQL to display those employees who contain a letter z to their first name and also display their last name, department, city, and state province.*/
+
+SELECT e.FIRST_NAME, e.LAST_NAME, d.DEPARTMENT_NAME, l.CITY, l.STATE_PROVINCE  FROM employees AS e 
+JOIN departments AS d ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+JOIN locations AS l ON l.LOCATION_ID = d.LOCATION_ID
+WHERE e.FIRST_NAME LIKE '%z%'; 
 
 /*6. Write a query in SQL to display all departments including those where does not have any employee.*/
 
