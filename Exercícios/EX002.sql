@@ -26,6 +26,9 @@ WHERE e.FIRST_NAME LIKE '%z%';
 
 /*6. Write a query in SQL to display all departments including those where does not have any employee.*/
 
+SELECT e.first_name, e.last_name, d.department_name, d.department_id FROM departments AS d 
+LEFT JOIN employees AS e ON e.department_id = d.department_id;
+
 /*7. Write a query in SQL to display the first and last name and salary for those employees who earn less than the employee earn whose number is 182.*/
 
 /*8. Write a query in SQL to display the first name of all employees including the first name of their manager.*/
