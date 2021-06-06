@@ -41,3 +41,25 @@ after 1st January, 1993 and ending with on or before 31 August, 1997*/
 /*16. Write a query in SQL to display the full name (first and last name ) of employees, job title and the salary 
 differences to their own job for those employees who is working in the department ID 80.*/
 
+/*17. Write a query in SQL to display the name of the country, city, and the departments which are running there.*/
+
+/*18. Write a query in SQL to display department name and the full name (first and last name) of the manager.*/
+
+/*19. Write a query in SQL to display job title and average salary of employees. */
+
+/*20. Write a query in SQL to display the details of jobs which was done by any of the employees who is presently earning a salary on and above 12000. */
+
+/*21. Write a query in SQL to display the country name, city, and number of those departments where at leaste 2 employees are working.*/
+
+/*22. Write a query in SQL to display the department name, full name (first and last name) of manager, and their city. */
+
+/*23. Write a query in SQL to display the employee ID, job name, number of days worked in for all those jobs in department 80.*/
+
+/*24. Write a query in SQL to display the full name (first and last name), and salary of those employees who working in any department located in London.*/
+
+/*25. Write a query in SQL to display full name(first and last name), job title, starting and ending date of last jobs for those employees with worked without a commission percentage.*/
+
+/*26. Write a query in SQL to display the department name and number of employees in each of the department. */
+
+/*27. Write a query in SQL to display the full name (firt and last name ) of employee with ID and name of the country presently where (s)he is working.*/
+
