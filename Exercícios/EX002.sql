@@ -36,6 +36,9 @@ WHERE SALARY < (SELECT SALARY FROM employees WHERE EMPLOYEE_ID =  182);
 
 /*8. Write a query in SQL to display the first name of all employees including the first name of their manager.*/
 
+SELECT e.FIRST_NAME AS "Employee", m.FIRST_NAME AS "Manager" FROM employees AS e
+JOIN employees AS m ON m.EMPLOYEE_ID = e.MANAGER_ID;
+
 /*9. Write a query in SQL to display the department name, city, and state province for each department.*/
 
 /*10. Write a query in SQL to display the first name, last name, department number and name, for all employees who have or have not any department. */
