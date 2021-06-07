@@ -31,6 +31,9 @@ LEFT JOIN employees AS e ON e.department_id = d.department_id;
 
 /*7. Write a query in SQL to display the first and last name and salary for those employees who earn less than the employee earn whose number is 182.*/
 
+SELECT FIRST_NAME, LAST_NAME, SALARY FROM employees 
+WHERE SALARY < (SELECT SALARY FROM employees WHERE EMPLOYEE_ID =  182);
+
 /*8. Write a query in SQL to display the first name of all employees including the first name of their manager.*/
 
 /*9. Write a query in SQL to display the department name, city, and state province for each department.*/
