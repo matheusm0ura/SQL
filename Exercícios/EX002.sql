@@ -41,7 +41,13 @@ JOIN employees AS m ON m.EMPLOYEE_ID = e.MANAGER_ID;
 
 /*9. Write a query in SQL to display the department name, city, and state province for each department.*/
 
+SELECT d.DEPARTMENT_NAME, l.CITY, l.STATE_PROVINCE FROM departments AS d
+JOIN locations AS l ON l.LOCATION_ID  = d.LOCATION_ID;
+
 /*10. Write a query in SQL to display the first name, last name, department number and name, for all employees who have or have not any department. */
+
+SELECT e.FIRST_NAME, e.LAST_NAME, d.DEPARTMENT_ID, d.DEPARTMENT_NAME FROM employees AS e 
+JOIN departments AS d ON e.DEPARTMENT_ID = d.DEPARTMENT_ID;
 
 /*11. Write a query in SQL to display the first name of all employees and the first name of their manager including those who does not working under any manager.*/
 
