@@ -66,6 +66,9 @@ after 1st January, 1993 and ending with on or before 31 August, 1997*/
 
 /*14. Write a query in SQL to display job title, full name (first and last name ) of employee, and the difference between maximum salary for the job and salary of the employee.*/
 
+SELECT j.JOB_TITLE, e.FIRST_NAME || ' ' || e.LAST_NAME AS "Name", j.MAX_SALARY - e.SALARY AS "Difference" FROM employees AS e
+JOIN jobs AS j ON e.JOB_ID = j.JOB_ID;
+
 /*15. Write a query in SQL to display the name of the department, average salary and number of employees working in that department who got commission.*/
 
 /*16. Write a query in SQL to display the full name (first and last name ) of employees, job title and the salary 
