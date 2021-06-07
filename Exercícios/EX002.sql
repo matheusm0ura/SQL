@@ -57,6 +57,9 @@ LEFT JOIN employees AS m ON m.EMPLOYEE_ID = e.MANAGER_ID;
 /*12. Write a query in SQL to display the first name, last name, and department number for those 
 employees who works in the same department as the employee who holds the last name as Taylor.*/
 
+SELECT e.FIRST_NAME, e.LAST_NAME, e.DEPARTMENT_ID FROM employees AS e
+JOIN employees AS b ON b.LAST_NAME = 'Taylor' AND b.DEPARTMENT_ID = e.DEPARTMENT_ID
+
 /*13. Write a query in SQL to display the job title, department name, 
 full name (first and last name ) of employee, and starting date for all the jobs which started on or 
 after 1st January, 1993 and ending with on or before 31 August, 1997*/
