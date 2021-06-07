@@ -51,6 +51,9 @@ JOIN departments AS d ON e.DEPARTMENT_ID = d.DEPARTMENT_ID;
 
 /*11. Write a query in SQL to display the first name of all employees and the first name of their manager including those who does not working under any manager.*/
 
+SELECT e.FIRST_NAME AS "Employee", m.FIRST_NAME AS "Manager" FROM employees AS e
+LEFT JOIN employees AS m ON m.EMPLOYEE_ID = e.MANAGER_ID;
+
 /*12. Write a query in SQL to display the first name, last name, and department number for those 
 employees who works in the same department as the employee who holds the last name as Taylor.*/
 
