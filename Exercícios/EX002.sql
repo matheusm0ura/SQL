@@ -82,6 +82,9 @@ differences to their own job for those employees who is working in the departmen
 
 /*18. Write a query in SQL to display department name and the full name (first and last name) of the manager.*/
 
+SELECT d.DEPARTMENT_NAME, e. FIRST_NAME || ' ' || e.LAST_NAME AS "Name" FROM departments AS d
+JOIN employees AS e ON e.EMPLOYEE_ID = d.MANAGER_ID;
+
 /*19. Write a query in SQL to display job title and average salary of employees. */
 
 SELECT j.JOB_TITLE, AVG(e.SALARY) FROM employees AS e
