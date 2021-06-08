@@ -11,6 +11,10 @@ JOIN locations AS l ON l.LOCATION_ID = d.LOCATION_ID;
 
 /*3. Write a query in SQL to display the first name, last name, salary, and job grade for all employees. */
 
+SELECT e. FIRST_NAME || ' ' || e.LAST_NAME AS "Name", e.SALARY, j.GRADE_LEVEL FROM employees AS e, job_grades AS j
+WHERE e.SALARY BETWEEN j.LOWEST_SAL AND j.HIGHEST_SAL
+ORDER BY j.GRADE_LEVEL;
+
 /*4. Write a query in SQL to display the first name, last name, department number and department name, for all employees for departments 80 or 40.*/
 
 SELECT e.FIRST_NAME, e.LAST_NAME, d.DEPARTMENT_ID, d.DEPARTMENT_NAME FROM employees AS e 
