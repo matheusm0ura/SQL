@@ -80,6 +80,10 @@ differences to their own job for those employees who is working in the departmen
 
 /*19. Write a query in SQL to display job title and average salary of employees. */
 
+SELECT j.JOB_TITLE, AVG(e.SALARY) FROM employees AS e
+JOIN jobs AS j ON e.JOB_ID = j.JOB_ID
+GROUP BY j.JOB_TITLE;
+
 /*20. Write a query in SQL to display the details of jobs which was done by any of the employees who is presently earning a salary on and above 12000. */
 
 SELECT e.EMPLOYEE_ID, e. FIRST_NAME || ' ' || e.LAST_NAME AS "Name", e.salary, j.START_DATE, j.END_DATE, j.JOB_ID FROM employees AS e
