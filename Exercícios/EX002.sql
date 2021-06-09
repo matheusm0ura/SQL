@@ -122,5 +122,10 @@ WHERE l.CITY = 'London';
 
 /*26. Write a query in SQL to display the department name and number of employees in each of the department. */
 
+SELECT d.DEPARTMENT_NAME, COUNT(e.EMPLOYEE_ID) AS "Number of employees" FROM departments AS d
+JOIN employees AS e ON d.DEPARTMENT_ID = e.DEPARTMENT_ID
+GROUP BY d.DEPARTMENT_ID
+ORDER BY "Number of employees";
+
 /*27. Write a query in SQL to display the full name (firt and last name ) of employee with ID and name of the country presently where (s)he is working.*/
 
