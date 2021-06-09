@@ -107,6 +107,10 @@ JOIN locations AS l ON l.LOCATION_ID = d.LOCATION_ID;
 
 /*23. Write a query in SQL to display the employee ID, job name, number of days worked in for all those jobs in department 80.*/
 
+SELECT jh.EMPLOYEE_ID, j.JOB_TITLE, (jh.END_DATE - jh.START_DATE) AS "Number of days" FROM job_history AS jh
+JOIN jobs AS j ON jh.JOB_ID = j.JOB_ID
+WHERE jh.DEPARTMENT_ID = 80; 
+
 /*24. Write a query in SQL to display the full name (first and last name), and salary of those employees who working in any department located in London.*/
 
 /*25. Write a query in SQL to display full name(first and last name), job title, starting and ending date of last jobs for those employees with worked without a commission percentage.*/
