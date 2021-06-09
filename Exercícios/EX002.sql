@@ -113,6 +113,11 @@ WHERE jh.DEPARTMENT_ID = 80;
 
 /*24. Write a query in SQL to display the full name (first and last name), and salary of those employees who working in any department located in London.*/
 
+SELECT e. FIRST_NAME || ' ' || e.LAST_NAME AS "Name", e.SALARY, d.DEPARTMENT_NAME, l.CITY FROM employees AS e 
+JOIN departments AS d ON d.DEPARTMENT_ID = e.DEPARTMENT_ID
+JOIN locations AS l ON d.LOCATION_ID = l.LOCATION_ID
+WHERE l.CITY = 'London';
+
 /*25. Write a query in SQL to display full name(first and last name), job title, starting and ending date of last jobs for those employees with worked without a commission percentage.*/
 
 /*26. Write a query in SQL to display the department name and number of employees in each of the department. */
