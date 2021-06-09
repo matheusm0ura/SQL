@@ -101,6 +101,10 @@ WHERE salary >= 12000;
 
 /*22. Write a query in SQL to display the department name, full name (first and last name) of manager, and their city. */
 
+SELECT d.DEPARTMENT_NAME, e. FIRST_NAME || ' ' || e.LAST_NAME AS "Name", l.CITY FROM employees AS e 
+JOIN  departments AS d ON e.EMPLOYEE_ID  = d.MANAGER_ID
+JOIN locations AS l ON l.LOCATION_ID = d.LOCATION_ID;
+
 /*23. Write a query in SQL to display the employee ID, job name, number of days worked in for all those jobs in department 80.*/
 
 /*24. Write a query in SQL to display the full name (first and last name), and salary of those employees who working in any department located in London.*/
