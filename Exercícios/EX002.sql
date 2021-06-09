@@ -120,6 +120,15 @@ WHERE l.CITY = 'London';
 
 /*25. Write a query in SQL to display full name(first and last name), job title, starting and ending date of last jobs for those employees with worked without a commission percentage.*/
 
+SELECT e. FIRST_NAME || ' ' || e.LAST_NAME AS "Name", j.JOB_TITLE, jh.START_DATE, jh.END_DATE FROM employees AS e
+JOIN jobs AS j ON j.JOB_ID = e.JOB_ID
+JOIN job_history AS jh ON jh.EMPLOYEE_ID = e.EMPLOYEE_ID
+
+AND jh.START_DATE = (SELECT MAX(A.START_DATE) FROM job_history AS A WHERE A.EMPLOYEE_ID = e.EMPLOYEE_ID AND e.COMMISSION_PCT = 0 GROUP BY e.EMPLOYEE_ID)
+
+AND jh.END_DATE = (SELECT MAX(A.END_DATE) FROM job_history AS A WHERE A.EMPLOYEE_ID = e.EMPLOYEE_ID AND e.COMMISSION_PCT = 0 GROUP BY e.EMPLOYEE_ID)
+ORDER BY e.EMPLOYEE_ID;
+
 /*26. Write a query in SQL to display the department name and number of employees in each of the department. */
 
 SELECT d.DEPARTMENT_NAME, COUNT(e.EMPLOYEE_ID) AS "Number of employees" FROM departments AS d
