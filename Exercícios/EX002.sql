@@ -81,6 +81,11 @@ JOIN jobs AS j ON e.JOB_ID = j.JOB_ID;
 
 /*15. Write a query in SQL to display the name of the department, average salary and number of employees working in that department who got commission.*/
 
+SELECT d.DEPARTMENT_NAME, COUNT(e.EMPLOYEE_ID), AVG(e.SALARY) AS "AVG" FROM departments AS d
+JOIN employees AS e ON d.DEPARTMENT_ID = e.DEPARTMENT_ID
+GROUP BY d.DEPARTMENT_ID
+ORDER BY "AVG";
+
 /*16. Write a query in SQL to display the full name (first and last name ) of employees, job title and the salary 
 differences to their own job for those employees who is working in the department ID 80.*/
 
