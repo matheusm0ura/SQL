@@ -142,3 +142,9 @@ ORDER BY "Number of employees";
 
 /*27. Write a query in SQL to display the full name (firt and last name ) of employee with ID and name of the country presently where (s)he is working.*/
 
+SELECT FIRST_NAME || ' ' || LAST_NAME AS "Name", 
+EMPLOYEE_ID, COUNTRY_NAME FROM employees 
+JOIN departments USING(DEPARTMENT_ID) 
+JOIN locations USING(LOCATION_ID) 
+JOIN countries USING (COUNTRY_ID);
+
