@@ -68,6 +68,12 @@ JOIN employees AS b ON b.LAST_NAME = 'Taylor' AND b.DEPARTMENT_ID = e.DEPARTMENT
 full name (first and last name ) of employee, and starting date for all the jobs which started on or 
 after 1st January, 1993 and ending with on or before 31 August, 1997*/
 
+SELECT job_title, department_name, first_name || ' ' || last_name AS "Name", start_date  FROM job_history 
+JOIN jobs USING (job_id) 
+JOIN departments USING (department_id) 
+JOIN  employees USING (employee_id) 
+WHERE start_date>='1993-01-01' AND start_date<='1997-08-31';
+
 /*14. Write a query in SQL to display job title, full name (first and last name ) of employee, and the difference between maximum salary for the job and salary of the employee.*/
 
 SELECT j.JOB_TITLE, e.FIRST_NAME || ' ' || e.LAST_NAME AS "Name", j.MAX_SALARY - e.SALARY AS "Difference" FROM employees AS e
