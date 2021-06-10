@@ -91,6 +91,11 @@ differences to their own job for those employees who is working in the departmen
 
 /*17. Write a query in SQL to display the name of the country, city, and the departments which are running there.*/
 
+SELECT c.COUNTRY_NAME, l.CITY, d.DEPARTMENT_NAME FROM countries AS c
+JOIN locations AS l ON l.COUNTRY_ID = c.COUNTRY_ID
+JOIN departments AS d ON d.LOCATION_ID = l.LOCATION_ID
+ORDER BY c.COUNTRY_NAME;
+
 /*18. Write a query in SQL to display department name and the full name (first and last name) of the manager.*/
 
 SELECT d.DEPARTMENT_NAME, e. FIRST_NAME || ' ' || e.LAST_NAME AS "Name" FROM departments AS d
