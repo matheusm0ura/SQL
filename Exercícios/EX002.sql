@@ -89,6 +89,10 @@ ORDER BY "AVG";
 /*16. Write a query in SQL to display the full name (first and last name ) of employees, job title and the salary 
 differences to their own job for those employees who is working in the department ID 80.*/
 
+SELECT e. FIRST_NAME || ' ' || e.LAST_NAME AS "Name", j.JOB_TITLE, j.MAX_SALARY - e.SALARY AS "Difference" FROM employees AS e
+JOIN jobs AS j On j.JOB_ID = e.JOB_ID
+WHERE e.DEPARTMENT_ID = 80;
+
 /*17. Write a query in SQL to display the name of the country, city, and the departments which are running there.*/
 
 SELECT c.COUNTRY_NAME, l.CITY, d.DEPARTMENT_NAME FROM countries AS c
