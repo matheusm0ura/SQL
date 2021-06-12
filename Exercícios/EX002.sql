@@ -119,6 +119,13 @@ WHERE salary >= 12000;
 
 /*21. Write a query in SQL to display the country name, city, and number of those departments where at leaste 2 employees are working.*/
 
+SELECT COUNTRY_NAME, CITY, COUNT(DEPARTMENT_ID) FROM countries
+JOIN locations USING(COUNTRY_ID)
+JOIN departments USING (LOCATION_ID)
+WHERE DEPARTMENT_ID IN (SELECT department_id FROM employees 
+GROUP BY department_id HAVING COUNT(department_id)>=2)
+GROUP BY  COUNTRY_NAME, CITY;
+
 /*22. Write a query in SQL to display the department name, full name (first and last name) of manager, and their city. */
 
 SELECT d.DEPARTMENT_NAME, e. FIRST_NAME || ' ' || e.LAST_NAME AS "Name", l.CITY FROM employees AS e 
