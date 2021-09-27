@@ -20,14 +20,18 @@ Return year, subject, winner, country, and category. Order the result by year, d
 24. From the following table, write a SQL query to find the details of 1970 Nobel Prize winners. Order the result by subject, ascending except ‘Chemistry’ 
 and ‘Economics’ which will come at the end of result set. Return year, subject, winner, country, and category.
 
-25. From the following table, write a SQL query to select a range of products whose price is in the range Rs.200 to Rs.600. 
-Begin and end values are included. Return pro_id, pro_name, pro_price, and pro_com.
+/*25. From the following table, write a SQL query to select a range of products whose price is in the range Rs.200 to Rs.600. 
+Begin and end values are included. Return pro_id, pro_name, pro_price, and pro_com.*/
 
-26. From the following table, write a SQL query to calculate the average price for manufacturer code equal to 16. Return avg.
+SELECT * FROM  item_mast WHERE pro_price BETWEEN 200 AND 600;
 
-27. From the following table, write a SQL query to display the pro_name as 'Item Name' and pro_priceas 'Price in Rs.'
+/*26. From the following table, write a SQL query to calculate the average price for manufacturer code equal to 16. Return avg.*/
 
+SELECT AVG(pro_price) FROM item_mast WHERE pro_com = 16;
 
+/*27. From the following table, write a SQL query to display the pro_name as 'Item Name' and pro_priceas 'Price in Rs.'*/
+
+SELECT pro_name AS "Item Name", pro_price AS "Price in Rs" FROM item_mast;
 
 /*28. From the following table, write a SQL query to find the items whose prices are higher than or equal to $250. Order the result 
 by product price in descending, then product name in ascending. Return pro_name and pro_price.*/
