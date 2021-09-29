@@ -1,22 +1,22 @@
 /*Qual o total de clientes que possuem MATTOS no nome?*/
-SELECT count(*) as TOTAL FROM tabela_de_clientes  WHERE NOME LIKE'%MATTOS%';
+SELECT count(*) as TOTAL FROM tabela_de_clientes  WHERE nome LIKE'%MATTOS%';
 
 /*Quais são os tipos de embalagem sem repetição em que o sabor é laranja?*/
-SELECT distinct embalagem, tamanho from tabela_de_produtos where sabor = 'Laranja';
+SELECT DISTINCT embalagem, tamanho FROM tabela_de_produtos WHERE sabor = 'Laranja';
 
 /*Quais são os bairros da cidade do Rio de Janeiro que possuem clientes?*/
-select DISTINCT bairro, cidade from tabela_de_clientes where cidade = 'Rio de Janeiro';
+SELECT DISTINCT bairro, cidade FROM tabela_de_clientes WHERE cidade = 'Rio de Janeiro';
 
 /*Queremos obter as 10 primeiras vendas do dia 01/01/2017. Qual seria o comando SQL para obter este resultado?*/
-select * from notas_fiscais where DATA_VENDA = '2017-01-01' LIMIT 10;
+SELECT * FROM notas_fiscais WHERE DATA_VENDA = '2017-01-01' LIMIT 10;
 
 /*Qual (ou quais) foi (foram) a(s) maior(es) venda(s) do produto “Linha Refrescante - 1 Litro - Morango/Limão”, em quantidade? 
 (Obtenha este resultado usando 2 SQLs)*/
-SELECT * FROM tabela_de_produtos where NOME_DO_PRODUTO =  'Linha Refrescante - 1 Litro - Morango/Limão';
-SELECT * FROM itens_notas_fiscais where CODIGO_DO_PRODUTO = 1101035 order by QUANTIDADE desc;
+SELECT * FROM tabela_de_produtos WHERE NOME_DO_PRODUTO =  'Linha Refrescante - 1 Litro - Morango/Limão';
+SELECT * FROM itens_notas_fiscais WHERE CODIGO_DO_PRODUTO = 1101035 ORDER BY QUANTIDADE DESC;
 
 /*Qual o total de cliente por estado?*/
-SELECT COUNT(*) AS 'TOTAL DE CLIENTE', ESTADO FROM tabela_de_clientes group by ESTADO;
+SELECT COUNT(*) AS 'TOTAL DE CLIENTE', ESTADO FROM tabela_de_clientes GROUP BY ESTADO;
 
 /*Qual o produto mais caro de cada categoria de embalagem?*/
 SELECT EMBALAGEM, MAX(PRECO_DE_LISTA) AS 'MAIOR PREÇO' FROM tabela_de_produtos GROUP BY EMBALAGEM;
