@@ -22,7 +22,8 @@ SELECT COUNT(*) AS 'TOTAL DE CLIENTE', ESTADO FROM tabela_de_clientes GROUP BY E
 SELECT EMBALAGEM, MAX(PRECO_DE_LISTA) AS 'MAIOR PREÇO' FROM tabela_de_produtos GROUP BY EMBALAGEM;
 
 /*Qual a soma total de limite de crédito por bairro?*/
-SELECT BAIRRO, SUM(LIMITE_DE_CREDITO) AS 'LIMITE TOTAL' FROM tabela_de_clientes GROUP BY BAIRRO order by 'LIMITE TOTAL';
+SELECT BAIRRO, SUM(LIMITE_DE_CREDITO) AS 'LIMITE TOTAL' FROM tabela_de_clientes 
+GROUP BY BAIRRO order by 'LIMITE TOTAL';
 
 /*Quantos itens de venda existem com a maior quantidade do produto '1101035'?*/
 SELECT COUNT(*) AS 'TOTAL' FROM itens_notas_fiscais 
@@ -56,10 +57,16 @@ FROM tabela_de_clientes;
 
 /*Qual o total de vendas para cada vendedor?*/
 SELECT n.matricula, v.nome, COUNT(*) AS TOTAL_DE_VENDAS FROM notas_fiscais AS n
-JOIN tabela_de_vendedores AS v on n.MATRICULA = v.MATRICULA GROUP BY n.MATRICULA;
+JOIN tabela_de_vendedores AS v on n.MATRICULA = v.MATRICULA 
+GROUP BY n.MATRICULA;
 
 /*Obtenha o faturamento anual da empresa. Leve em consideração que o valor financeiro das vendas consiste em multiplicar a quantidade pelo preço.*/
 SELECT YEAR(n.DATA_VENDA) AS ANO, SUM(i.QUANTIDADE * i.PRECO) AS FATURAMENTO_ANUAL 
 FROM notas_fiscais as n
 JOIN itens_notas_fiscais AS i on n.NUMERO = i.NUMERO 
 GROUP BY ANO;
+
+/*Quais são os vendedores que têm escritório no mesmo bairro que os clientes?*/
+SELECT v.nome AS NOME_VENDEDOR, c.nome AS NOME_CLIENTE, c.bairro AS BAIRRO 
+FROM tabela_de_vendedores AS v 
+JOIN tabela_de_clientes AS c ON v.BAIRRO = c.BAIRRO;
