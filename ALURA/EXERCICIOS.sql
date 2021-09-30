@@ -76,7 +76,7 @@ SELECT bairro, nome, 'VENDEDOR' AS TIPO FROM tabela_de_vendedores
 UNION 
 SELECT bairro, nome, 'CLIENTE' AS TIPO FROM tabela_de_clientes;
 
-/*Apartir de uma view, selecione os maiores preços de cada produto*/
+/*A partir de uma view, selecione os maiores preços de cada produto*/
 SELECT P.nome_do_produto, P.embalagem, P.preco_de_lista, X.preco_maximo FROM tabela_de_produtos AS P
 JOIN vw_maiores_precos_embalagens AS X
 ON P.embalagem = X.embalagem;
