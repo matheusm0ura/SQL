@@ -70,3 +70,7 @@ GROUP BY ANO;
 SELECT v.nome AS NOME_VENDEDOR, c.nome AS NOME_CLIENTE, c.bairro AS BAIRRO 
 FROM tabela_de_vendedores AS v 
 JOIN tabela_de_clientes AS c ON v.BAIRRO = c.BAIRRO;
+
+/*Retorne todos os bairros em uma mesma consulta*/
+SELECT bairro FROM tabela_de_vendedores 
+UNION SELECT bairro FROM tabela_de_clientes;
