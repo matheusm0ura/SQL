@@ -80,3 +80,7 @@ SELECT bairro, nome, 'CLIENTE' AS TIPO FROM tabela_de_clientes;
 SELECT P.nome_do_produto, P.embalagem, P.preco_de_lista, X.preco_maximo FROM tabela_de_produtos AS P
 JOIN vw_maiores_precos_embalagens AS X
 ON P.embalagem = X.embalagem;
+
+/*Faça uma consulta listando o nome do cliente e o endereço completo (Com rua, bairro, cidade e estado).*/
+SELECT nome AS 'NOME_DO_CLIENTE', CONCAT(endereco_1, ', ', bairro, ', ', cidade, ', ', estado) AS 'ENDEREÇO COMPLETO'from tabela_de_clientes;
+
