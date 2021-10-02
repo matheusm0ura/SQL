@@ -87,4 +87,13 @@ SELECT nome AS 'NOME_DO_CLIENTE', CONCAT(endereco_1, ', ', bairro, ', ', cidade,
 /*Crie uma consulta que mostre o nome e a idade atual dos clientes.*/
 SELECT NOME AS NOME_DO_CLIENTE, TIMESTAMPDIFF (YEAR, DATA_DE_NASCIMENTO, CURDATE()) AS IDADE FROM  tabela_de_clientes;
 
+/*Na tabela de notas fiscais temos o valor do imposto. Já na tabela de itens temos a quantidade e o faturamento. 
+Calcule o valor do imposto pago no ano de 2016 arredondando para o menor inteiro.*/
+SELECT YEAR(n.data_venda) AS ANO, CONCAT("R$ ", CAST(FLOOR(SUM(n.imposto * i.quantidade * i.preco)) AS DECIMAL(10, 2))) AS IMPOSTO_PAGO 
+FROM notas_fiscais AS n 
+JOIN itens_notas_fiscais AS i 
+ON n.numero = i.numero
+WHERE YEAR(n.data_venda) = 2016
+GROUP BY ANO;
+
 
