@@ -84,3 +84,7 @@ ON P.embalagem = X.embalagem;
 /*Faça uma consulta listando o nome do cliente e o endereço completo (Com rua, bairro, cidade e estado).*/
 SELECT nome AS 'NOME_DO_CLIENTE', CONCAT(endereco_1, ', ', bairro, ', ', cidade, ', ', estado) AS 'ENDEREÇO COMPLETO'from tabela_de_clientes;
 
+/*Crie uma consulta que mostre o nome e a idade atual dos clientes.*/
+SELECT NOME AS NOME_DO_CLIENTE, TIMESTAMPDIFF (YEAR, DATA_DE_NASCIMENTO, CURDATE()) AS IDADE FROM  tabela_de_clientes;
+
+
