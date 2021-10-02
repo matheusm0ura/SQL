@@ -96,4 +96,8 @@ ON n.numero = i.numero
 WHERE YEAR(n.data_venda) = 2016
 GROUP BY ANO;
 
+/*Retorne a data atual no padrão dia/mês/ano.*/
+SELECT CONCAT('A data de hoje é: ', DATE_FORMAT(CURDATE(), '%d/%m/%Y')) AS DATA_DE_HOJE;
+
+
 
