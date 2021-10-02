@@ -99,5 +99,15 @@ GROUP BY ANO;
 /*Retorne a data atual no padrão dia/mês/ano.*/
 SELECT CONCAT('A data de hoje é: ', DATE_FORMAT(CURDATE(), '%d/%m/%Y')) AS DATA_DE_HOJE;
 
+/*Queremos construir um SQL cujo resultado seja, para cada cliente:
+“O cliente João da Silva faturou 120000 no ano de 2016”.
+Somente para o ano de 2016.*/
+SELECT c.nome AS NOME_CLIENTE, ROUND(SUM(i.preco * i.quantidade), 2) AS FATURAMENTO, n.data_venda AS 'DATA'
+from tabela_de_clientes AS c
+JOIN notas_fiscais AS n ON c.cpf = n.cpf
+JOIN itens_notas_fiscais AS i on n.numero = i.numero
+WHERE YEAR(n.DATA_VENDA) = 2016
+GROUP BY c.nome, YEAR('DATA');
+
 
 
