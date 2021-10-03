@@ -150,5 +150,21 @@ JOIN itens_notas_fiscais AS i ON i.numero = n.numero
 GROUP BY n.cpf, ANO_MES, NOME_CLIENTE) AS x
 WHERE x.SOMA_QUANTIDADE > x.VOLUME_DE_COMPRAS;
 
+/*Retorne a quantidade de vendas no ano de 2016 e o percentual da quantidade de cada valor em relação ao valor total vendido nesse ano.*/
+SELECT VENDA_SABOR.SABOR, VENDA_SABOR.QUANTIDADE, VENDA_SABOR.ANO, ROUND((VENDA_SABOR.quantidade / VENDA_TOTAL.quantidade) * 100, 2) AS PERCENTUAL FROM 
+(SELECT p.sabor, SUM(i.quantidade) AS QUANTIDADE, YEAR(n.data_venda) AS ANO FROM tabela_de_produtos AS p
+JOIN itens_notas_fiscais AS i ON p.codigo_do_produto = i.codigo_do_produto
+JOIN notas_fiscais AS n ON n.numero = i.numero
+WHERE YEAR(n.data_venda) = 2016
+GROUP BY p.sabor, ANO) AS VENDA_SABOR
+JOIN 
+(SELECT SUM(i.quantidade) AS QUANTIDADE, YEAR(n.data_venda) AS ANO FROM tabela_de_produtos AS p
+JOIN itens_notas_fiscais AS i ON p.codigo_do_produto = i.codigo_do_produto
+JOIN notas_fiscais AS n ON n.numero = i.numero
+WHERE YEAR(n.data_venda) = 2016
+GROUP BY ANO) AS VENDA_TOTAL
+ON VENDA_SABOR.ANO = VENDA_TOTAL.ANO
+ORDER BY VENDA_SABOR.quantidade DESC;
+
 
 
