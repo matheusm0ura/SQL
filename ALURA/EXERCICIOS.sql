@@ -116,7 +116,7 @@ JOIN itens_notas_fiscais AS i ON i.numero = n.numero
 GROUP BY n.cpf, ANO_MES;
 
 /*RELATÓRIO DE VENDAS*/
-/*Faça um relátorio de compras válidas em cada mês para cada cliente.*/
+/*Faça um relátorio de compras que agrupe todas as compras do mês de cada cliente, verificando se elas são válidas ou não.*/
 SELECT x.ANO_MES, x.NOME_CLIENTE, x.CPF, x.SOMA_QUANTIDADE, x.VOLUME_DE_COMPRAS, 
 CASE 
 	WHEN (x.SOMA_QUANTIDADE <= x.VOLUME_DE_COMPRAS) THEN 'COMPRA VÁLIDA'
@@ -131,5 +131,24 @@ FROM tabela_de_clientes AS c
 JOIN notas_fiscais AS n ON c.cpf = n.cpf
 JOIN itens_notas_fiscais AS i ON i.numero = n.numero
 GROUP BY n.cpf, ANO_MES, NOME_CLIENTE) AS x;
+
+/*A partir da consulta anterior, retorne apenas as compras inválidas.*/
+SELECT x.ANO_MES, x.NOME_CLIENTE, x.CPF, x.SOMA_QUANTIDADE, x.VOLUME_DE_COMPRAS, 
+CASE 
+	WHEN (x.SOMA_QUANTIDADE <= x.VOLUME_DE_COMPRAS) THEN 'COMPRA VÁLIDA'
+    WHEN (x.SOMA_QUANTIDADE > x.VOLUME_DE_COMPRAS) THEN 'COMPRA INVÁLIDA'
+END AS 'STATUS'
+
+FROM(
+SELECT DATE_FORMAT(n.data_venda, '%Y/%m') AS ANO_MES, 
+c.nome AS NOME_CLIENTE, c.cpf AS CPF, 
+SUM(i.quantidade) AS SOMA_QUANTIDADE, 
+MAX(c.volume_de_compra) AS VOLUME_DE_COMPRAS
+FROM tabela_de_clientes AS c
+JOIN notas_fiscais AS n ON c.cpf = n.cpf
+JOIN itens_notas_fiscais AS i ON i.numero = n.numero
+GROUP BY n.cpf, ANO_MES, NOME_CLIENTE) AS x
+WHERE x.SOMA_QUANTIDADE > x.VOLUME_DE_COMPRAS;
+
 
 
