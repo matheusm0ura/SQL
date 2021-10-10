@@ -166,5 +166,12 @@ GROUP BY ANO) AS VENDA_TOTAL
 ON VENDA_SABOR.ANO = VENDA_TOTAL.ANO
 ORDER BY VENDA_SABOR.quantidade DESC;
 
+/*Vamos aumentar em 30% o volume de compra dos clientes que possuem, em seus endereços bairros onde os vendedores possuam escritórios.*/
+UPDATE tabela_de_clientes AS c 
+JOIN tabela_de_vendedores AS v
+ON c.bairro = v.bairro
+SET c.limite_de_credito = limite_de_credito * 1.3;
+
+
 
 
