@@ -172,6 +172,12 @@ JOIN tabela_de_vendedores AS v
 ON c.bairro = v.bairro
 SET c.limite_de_credito = limite_de_credito * 1.3;
 
+/*Vamos excluir as notas fiscais (Apenas o cabeçalho) cujos clientes tenham menos que 18 anos.*/
+DELETE n FROM tabela_de_clientes AS c
+JOIN notas_fiscais AS n 
+ON c.CPF = n.CPF
+WHERE c.IDADE <= 18;
+
 
 
 
