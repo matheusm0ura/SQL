@@ -178,6 +178,14 @@ JOIN notas_fiscais AS n
 ON c.CPF = n.CPF
 WHERE c.IDADE <= 18;
 
+/*Aumente a comissão dos venderores em 15% e utilize transação para isso.*/
+START TRANSACTION;
+SELECT * FROM tabela_de_vendedores;
+UPDATE tabela_de_vendedores SET percentual_comissao = percentual_comissao * 1.15;
+ROLLBACK; /*não modifica os dados*/
 
-
+START TRANSACTION;
+SELECT * FROM tabela_de_vendedores;
+UPDATE tabela_de_vendedores SET percentual_comissao = percentual_comissao * 1.15;
+COMMIT; /*salva as alterações feitas no BD*/
 
