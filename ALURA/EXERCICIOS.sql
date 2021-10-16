@@ -189,3 +189,13 @@ SELECT * FROM tabela_de_vendedores;
 UPDATE tabela_de_vendedores SET percentual_comissao = percentual_comissao * 1.15;
 COMMIT; /*salva as alterações feitas no BD*/
 
+/*Construa uma TRIGGER (Vamos chamá-la de TG_CLIENTES_IDADE_INSERT) que atualize as idades dos clientes, na tabela de clientes, toda vez que a tabela sofrer uma inclusão.*/
+DELIMITER //
+CREATE TRIGGER TG_CLIENTES_IDADE_INSERT BEFORE INSERT ON tabela_de_clientes
+FOR EACH ROW
+BEGIN
+SET NEW.IDADE = timestampdiff(YEAR, NEW.DATA_DE_NASCIMENTO, NOW());
+END//
+
+
+
