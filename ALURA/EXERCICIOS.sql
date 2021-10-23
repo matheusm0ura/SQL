@@ -229,5 +229,13 @@ VALUES
 (vCodigo, vproduto, vEmbalagem, vTamanho, vSabor, vPreco);
 END
 
+/*Crie uma Stored procedure para reajustar o % de comissão dos vendedores. Inclua como parâmetro da SP o %, expresso em valor*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Reajuste_Comissao`(vCodigo varchar(5), vComissao float)
+BEGIN
+update tabela_de_vendedores set percentual_comissao = percentual_comissao * (1 + vComissao)
+where matricula =  vCodigo;
+END$$
 
 
