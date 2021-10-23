@@ -254,4 +254,22 @@ select NUMNOTAS;
 
 END$$
 
+/*Crie uma Stored Procedure que, baseado em uma data, contamos o número de notas fiscais. Se houverem mais que 70 notas exibimos a mensagem: ‘Muita nota’. 
+Ou então exibimos a mensagem ‘Pouca nota’. Também exibir o número de notas. Chame esta Stored Procedure de Testa_Numero_Notas.*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Testa_Numero_Notas`(vData date)
+BEGIN
+DECLARE vResultado VARCHAR(15);
+DECLARE vQuantidade INT;
+SELECT count(*) INTO vQuantidade FROM notas_fiscais 
+WHERE data_venda = vData;
+
+IF vQuantidade > 70 THEN
+	SET vResultado = 'Muita nota';
+ELSE
+	SET vResultado = 'Pouca nota';
+END IF;
+SELECT vQuantidade AS 'Quantidade de notas ', vResultado AS 'Resultado';
+END$$
 
