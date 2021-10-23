@@ -241,4 +241,17 @@ update tabela_de_vendedores set percentual_comissao = percentual_comissao * (1 +
 where matricula =  vCodigo;
 END$$
 
+/*Crie uma variável chamada NUMNOTAS e atribua a ela o número de notas fiscais do dia 01/01/2017. 
+Mostre na saída do script o valor da variável. (Chame esta Stored Procedure de Quantidade_Notas)*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Quantidade_Notas`()
+BEGIN
+declare NUMNOTAS int;
+select count(*) into NUMNOTAS from notas_fiscais 
+where data_venda = '2017-01-01';
+select NUMNOTAS;
+
+END$$
+
 
