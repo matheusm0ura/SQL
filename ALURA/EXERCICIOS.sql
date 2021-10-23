@@ -209,25 +209,28 @@ SET NEW.IDADE = timestampdiff(YEAR, NEW.DATA_DE_NASCIMENTO, NOW());
 END//
 
 /*Crie uma Stored Procedure que insira um registro na tabela de produtos*/
-CREATE PROCEDURE `inclui_novo_produto` ()
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `inclui_produto_parametro`(vCodigo varchar(50), vproduto varchar(50), vEmbalagem varchar(50),
+vTamanho varchar(50), vSabor varchar(50),  vPreco decimal(10,2))
 BEGIN
-declare vCodigo varchar(50) default '3000001';
-declare vproduto varchar(50) default 'sabor do mar 700ml - Manga';
-declare vEmbalagem varchar(50) default 'Garrafa';
-declare vTamanho varchar(50) default '700ml';
-declare vSabor varchar(50) default 'Manga';
-declare vPreco decimal(10,2) default 9.25;
-
-INSERT INTO `sucos_vendas`.`tabela_de_produtos`
-(`CODIGO_DO_PRODUTO`,
-`NOME_DO_PRODUTO`,
-`EMBALAGEM`,
-`TAMANHO`,
-`SABOR`,
-`PRECO_DE_LISTA`)
-VALUES
-(vCodigo, vproduto, vEmbalagem, vTamanho, vSabor, vPreco);
-END
+	declare mensagem varchar(50);
+	declare exit handler for 1062
+	BEGIN
+		set mensagem = 'CHAVE PRIMÁRIA DUPLICADA';
+		select mensagem;
+	END;
+	INSERT INTO `sucos_vendas`.`tabela_de_produtos`
+	(`CODIGO_DO_PRODUTO`,
+	`NOME_DO_PRODUTO`,
+	`EMBALAGEM`,
+	`TAMANHO`,
+	`SABOR`,
+	`PRECO_DE_LISTA`)
+	VALUES
+	(vCodigo, vproduto, vEmbalagem, vTamanho, vSabor, vPreco);
+	set mensagem = 'PRODUTO INCLUÍDO COM SUCESSO';
+	select mensagem;
+END$$
 
 /*Crie uma Stored procedure para reajustar o % de comissão dos vendedores. Inclua como parâmetro da SP o %, expresso em valor*/
 DELIMITER $$
