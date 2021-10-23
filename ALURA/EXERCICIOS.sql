@@ -270,3 +270,25 @@ END IF;
 SELECT vQuantidade AS 'Quantidade de notas ', vResultado AS 'Resultado';
 END$$
 
+/*Crie uma Stored Procedure que classifique os produtos em CARO, EM CONTA ou BARATO os produtos.*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `classifica_produto`(vCod varchar(10))
+BEGIN
+DECLARE vResultado VARCHAR(10);
+DECLARE vPreco FLOAT;
+
+SELECT PRECO_DE_LISTA INTO vPreco from tabela_de_produtos WHERE codigo_do_produto = vCod;
+
+IF vPreco >= 12 THEN
+	SET vResultado = 'CARO';
+ELSEIF vPreco >= 7 AND vPreco < 12 THEN
+	SET vResultado = 'EM CONTA';
+ELSE
+	SET vResultado = 'BARATO';
+END IF;
+SELECT vResultado;
+END$$
+
+
+
