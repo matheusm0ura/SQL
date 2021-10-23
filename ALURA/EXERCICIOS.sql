@@ -33,6 +33,17 @@ GROUP BY CODIGO_DO_PRODUTO;
 
 /*Quais foram os clientes que fizeram mais de 2000 compras em 2016?*/
 SELECT CPF, COUNT(*) AS TOTAL_DE_COMPRAS FROM notas_fiscais 
+
+/*Crie uma Stored procedure que atualize a idade dos clientes. Lembrando que o comando para calcular a idade*/
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Calcula_Idade`()
+BEGIN
+update tabela_de_clientes as c
+set c.idade = TIMESTAMPDIFF(YEAR, c.data_de_nascimento, CURDATE()); 
+END$$
+
+
+DELIMITER ;
 WHERE YEAR(DATA_VENDA) = 2016 
 GROUP BY CPF HAVING TOTAL_DE_COMPRAS > 2000;
 
