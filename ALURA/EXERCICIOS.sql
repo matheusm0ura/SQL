@@ -290,5 +290,37 @@ END IF;
 SELECT vResultado;
 END$$
 
+/*Construa uma Stored Procedure chamada Comparativo_Vendas que compara as vendas em duas datas (Estas duas datas serão parâmetros da SP). 
+Se a variação percentual destas vendas for maior que 10% a resposta deve ser ‘Verde’. 
+Se for entre -10% e 10% deve retornar ‘Amarela1. Se o retorno form menor que -10% deve retornar ‘Vermelho’.*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Comparativo_Vendas`(vData1 date, vData2 date)
+BEGIN
+DECLARE vSoma1 DECIMAL(10,2);
+DECLARE vSoma2 DECIMAL(10,2);
+DECLARE vVariacao DECIMAL(10,2);
+
+SELECT SUM(B.QUANTIDADE * B.PRECO) INTO vSoma1 FROM 
+NOTAS_FISCAIS A INNER JOIN ITENS_NOTAS_FISCAIS B
+ON A.NUMERO = B.NUMERO
+WHERE A.DATA_VENDA = vData1;
+
+SELECT SUM(B.QUANTIDADE * B.PRECO) INTO vSoma2 FROM 
+NOTAS_FISCAIS A INNER JOIN ITENS_NOTAS_FISCAIS B
+ON A.NUMERO = B.NUMERO
+WHERE A.DATA_VENDA = vData2;
+
+SET vVariacao = ((vSoma2 / vSoma1) - 1) * 100;
+
+IF vVariacao > 10 THEN
+	SELECT 'VERDE';
+ELSEIF vVariacao >= -10 AND vVariacao <= 10 THEN
+	SELECT 'AMARELO';
+ELSE
+	SELECT 'VERMELHO';
+END IF;
+END$$
+
 
 
