@@ -322,5 +322,22 @@ ELSE
 END IF;
 END$$
 
+/*Utlizando uma SP, classifique os sabores dos produtos.*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `classifica_sabor`(vProduto varchar(20))
+BEGIN
+DECLARE vSabor varchar(30);
+SELECT sabor INTO vSabor from tabela_de_produtos WHERE codigo_do_produto = vProduto;
 
+CASE vSabor 
+    WHEN 'Lima/Limão' THEN SELECT 'CÍTRICO';
+    WHEN 'Laranja' THEN SELECT 'CÍTRICO';
+    WHEN 'Morango/Limão' THEN SELECT 'CÍTRICO';
+    WHEN 'Uva' THEN SELECT 'NEUTRO';
+    WHEN 'Morango' THEN SELECT 'NEUTRO';
+    ELSE SELECT 'ÁCIDO';
+END CASE;
+
+END$$
 
