@@ -341,3 +341,31 @@ END CASE;
 
 END$$
 
+/*Implemente a Stored Procedure do exercício do vídeo 2, agora usando CASE CONDICIONAL. Chame de Comparativo_Vendas_Case_Cond.*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Comparativo_Vendas_Case_Cond`(data_1 date, data_2 date)
+BEGIN
+DECLARE vSoma1 DECIMAL(10,2);
+DECLARE vSoma2 DECIMAL(10,2);
+DECLARE vVariacao DECIMAL(10,2);
+
+SELECT SUM(B.QUANTIDADE * B.PRECO) INTO vSoma1 FROM 
+NOTAS_FISCAIS A INNER JOIN ITENS_NOTAS_FISCAIS B
+ON A.NUMERO = B.NUMERO
+WHERE A.DATA_VENDA= data_1;
+
+SELECT SUM(B.QUANTIDADE * B.PRECO) INTO vSoma2 FROM 
+NOTAS_FISCAIS A INNER JOIN ITENS_NOTAS_FISCAIS B
+ON A.NUMERO = B.NUMERO
+WHERE A.DATA_VENDA = data_2;
+
+SET vVariacao = ((vSoma2 / vSoma1) - 1) * 100;
+CASE 
+WHEN vVariacao > 10 THEN SELECT 'VERDE';
+WHEN vVariacao >= -10 AND vVariacao <= 10 THEN SELECT 'AMARELO';
+WHEN vVariacao < -10 THEN SELECT 'VERMELHO';	
+END CASE;
+
+END$$
+
