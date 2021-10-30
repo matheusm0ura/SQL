@@ -369,3 +369,28 @@ END CASE;
 
 END$$
 
+/*Crie uma Stored Procedure usando um cursor para achar o valor total de todos os créditos de todos os clientes. Chame esta SP de Limite_Creditos.*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Limite_Creditos`()
+BEGIN
+    DECLARE fim_do_cursor BIT DEFAULT 0;
+    DECLARE vLimite_credito FLOAT;
+    DECLARE vLimite_total FLOAT DEFAULT 0;
+    DECLARE c CURSOR FOR SELECT limite_de_credito FROM tabela_de_clientes;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET fim_do_cursor = 1; 
+    OPEN c;
+	
+    WHILE fim_do_cursor = 0
+    DO 	
+		FETCH c INTO vLimite_credito;
+		IF fim_do_cursor = 0 THEN
+			SET vLimite_total = vLimite_credito + vLimite_total;
+		END IF;
+	
+    END WHILE;
+    SELECT vLimite_total AS 'TOTAL DE CRÉDITO ';
+    CLOSE c;
+
+END$$
+
