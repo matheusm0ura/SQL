@@ -394,3 +394,23 @@ BEGIN
 
 END$$
 
+/*Crie uma função que retorne o tipo de sabor.*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` FUNCTION `acha_tipo_sabor`(vSabor VARCHAR(50)) RETURNS varchar(20) CHARSET utf8mb4
+BEGIN
+	DECLARE vRetorno VARCHAR(20) DEFAULT "";
+    
+    CASE vSabor 
+		WHEN 'Lima/Limão' THEN SET vRetorno = 'CÍTRICO';
+		WHEN 'Laranja' THEN SET vRetorno = 'CÍTRICO';
+		WHEN 'Morango/Limão'  THEN SET vRetorno = 'CÍTRICO';
+		WHEN 'Uva'  THEN SET vRetorno = 'NEUTRO';
+		WHEN 'Morango'  THEN SET vRetorno = 'NEUTRO';
+		ELSE SET vRetorno ='ÁCIDO';
+	END CASE;
+    RETURN vRetorno;
+END$$
+
+/*Retorne, a partir da função criada, o nome, o sabor e o tipo do sabor do produto.*/
+SELECT nome_do_produto, sabor, acha_tipo_sabor(SABOR) AS TIPO FROM tabela_de_produtos;
