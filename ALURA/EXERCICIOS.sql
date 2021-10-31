@@ -414,3 +414,14 @@ END$$
 
 /*Retorne, a partir da função criada, o nome, o sabor e o tipo do sabor do produto.*/
 SELECT nome_do_produto, sabor, acha_tipo_sabor(SABOR) AS TIPO FROM tabela_de_produtos;
+
+/*Utilizando uma função que retorne o número de notas fiscais em determinada data.*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` FUNCTION `NumeroNotas`(vData date) RETURNS int
+BEGIN
+    DECLARE vRetorno INTEGER DEFAULT 0;
+    SELECT COUNT(*) INTO vRetorno FROM notas_fiscais WHERE data_venda =  vData;
+
+RETURN vRetorno;
+END$$
