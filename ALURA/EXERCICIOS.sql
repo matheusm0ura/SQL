@@ -454,3 +454,6 @@ BEGIN
     SELECT * FROM tabela_aleatorios;
 END$$
 
+/*Faça uma consulta que retorne um produto aleatório.*/
+SELECT * FROM tabela_de_produtos ORDER BY RAND () LIMIT 1; 
+
