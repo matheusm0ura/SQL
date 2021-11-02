@@ -425,3 +425,14 @@ BEGIN
 
 RETURN vRetorno;
 END$$
+
+/*Crie uma função que retorne um número aleatório de acordo com determinado intervalo.*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` FUNCTION `retorna_num_aleatorio`(num_max int, num_min int) RETURNS int
+BEGIN
+	DECLARE num_aleatorio INTEGER;
+    SELECT FLOOR((RAND() *  num_max - num_min + 1) + num_min) INTO num_aleatorio;
+    RETURN num_aleatorio;
+END$$
+
