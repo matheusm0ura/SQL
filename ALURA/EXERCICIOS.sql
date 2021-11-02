@@ -436,3 +436,21 @@ BEGIN
     RETURN num_aleatorio;
 END$$
 
+/*Faça uma SP (Chame-a de Tabela_Numeros) que use um loop para gravar nesta tabela 100 números aleatórios entre 0 e 1000. Depois liste numa consulta esta tabela.*/
+DELIMITER $$
+USE `sucos_vendas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tab_numeros_aleatorios`()
+BEGIN
+    DECLARE counter INT DEFAULT 0;
+    DECLARE num_aleatorio INT;
+    TRUNCATE tabela_aleatorios;
+    
+    WHILE counter < 100
+     DO
+        SELECT retorna_num_aleatorio(1000, 0) INTO num_aleatorio;
+        INSERT INTO tabela_aleatorios values (num_aleatorio);
+	SET counter = counter + 1;
+    END WHILE;
+    SELECT * FROM tabela_aleatorios;
+END$$
+
