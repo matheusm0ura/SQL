@@ -395,6 +395,7 @@ BEGIN
 END$$
 
 /*Crie uma função que retorne o tipo de sabor.*/
+/*SET GLOBAL LOG_BIN_TRUST_FUNCTION_CREATORS = 1;*/
 DELIMITER $$
 USE `sucos_vendas`$$
 CREATE DEFINER=`root`@`localhost` FUNCTION `acha_tipo_sabor`(vSabor VARCHAR(50)) RETURNS varchar(20) CHARSET utf8mb4
