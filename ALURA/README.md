@@ -1,1 +1,1 @@
-#Exercícios utiliizando o SGBD MySQL
+# Exercícios utiliizando o SGBD MySQL
