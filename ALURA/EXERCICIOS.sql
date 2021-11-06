@@ -458,3 +458,7 @@ END$$
 /*Faça uma consulta que retorne um produto aleatório.*/
 SELECT * FROM tabela_de_produtos ORDER BY RAND () LIMIT 1; 
 
+/*Bloquei e desbloquei o banco de dados para backup.*/
+LOCK INSTANCE FOR BACKUP;
+UNLOCK INSTANCE;
+
