@@ -468,3 +468,12 @@ GRANT ALL PRIVILEGES ON *.* TO 'admin01'@'localhost' WITH GRANT OPTION;
 
 /*Apague um usuário do BD.*/
 DROP USER 'admin01'@'localhost';
+
+/*Crie um usuário com permissão apenas para leitura.*/
+CREATE USER 'read01'@'localhost' IDENTIFIED BY '123456';
+GRANT SELECT, EXECUTE ON *.* TO 'admin01'@'localhost';
+
+/*Crie um usuário que tenha acesso somente à base de dados sucos_venda.*/
+CREATE USER 'user04'@'%' IDENTIFIED BY '123456';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE ON
+sucos_vendas.* TO 'user04'@'%';
