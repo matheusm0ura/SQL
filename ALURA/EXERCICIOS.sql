@@ -462,3 +462,9 @@ SELECT * FROM tabela_de_produtos ORDER BY RAND () LIMIT 1;
 LOCK INSTANCE FOR BACKUP;
 UNLOCK INSTANCE;
 
+/*Crie um usuário com todos os privilégios.*/
+CREATE USER 'admin01'@'localhost' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON *.* TO 'admin01'@'localhost' WITH GRANT OPTION;
+
+/*Apague um usuário do BD.*/
+DROP USER 'admin01'@'localhost';
