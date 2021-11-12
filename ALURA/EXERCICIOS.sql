@@ -477,3 +477,16 @@ GRANT SELECT, EXECUTE ON *.* TO 'admin01'@'localhost';
 CREATE USER 'user04'@'%' IDENTIFIED BY '123456';
 GRANT SELECT, INSERT, UPDATE, DELETE, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE ON
 sucos_vendas.* TO 'user04'@'%';
+
+/*Crie um usuário que tenha acesso somente à tabela de notas ficais e à tabela de vendedores.*/
+CREATE USER 'user05'@'%' IDENTIFIED BY '123456';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE ON
+sucos_vendas.notas_fiscais TO 'user05'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE ON
+sucos_vendas.tabela_de_vendedores TO 'user05'@'%';
+
+/*Remova todos os privilégios do user04.*/
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'user04'@'%';
+
+/*Remova o privilégio de UPDATE e DELETE do usuário user04.*/
+REVOKE SELECT, DELETE ON sucos_vendas.* FROM 'user04'@'%';
