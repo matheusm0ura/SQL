@@ -34,3 +34,9 @@ WHERE f.CPF NOT IN (SELECT CPF_FUNCIONARIO FROM tb_dependente);
 SELECT d.*, f.PRIMEIRO_NOME, f.ULTIMO_NOME FROM tb_dependente AS d 
 JOIN tb_funcionario AS f ON d.CPF_FUNCIONARIO = f.CPF
 WHERE f.SEXO = "F";
+
+/*Recupere todos os nomes dos funcionários do departamento 5 que 
+trabalham mais de 10 horas por semana no projeto 10.*/
+SELECT CONCAT(f.PRIMEIRO_NOME,' ', f.NOME_MEIO,'. ', f.ULTIMO_NOME) AS NOME FROM tb_funcionario AS f
+JOIN tb_trabalha_em AS t ON f.CPF = t.CPF_FUNCIONARIO
+WHERE f.NUMERO_DEPARTAMENTO = 5 AND t.NUMERO_PROJETO = 10 AND t.HORAS >= 10;
