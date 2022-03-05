@@ -28,3 +28,6 @@ JOIN tb_departamento AS d ON d.NUMERO_DEPARTAMENTO = p.NUMERO_DEPARTAMENTO
 JOIN tb_funcionario AS f ON d.CPF_GERENTE = f.CPF
 WHERE f.ULTIMO_NOME = "Souza";
 
+/*Selecione todos os funcionários que não possuem dependentes.*/
+SELECT CONCAT(f.PRIMEIRO_NOME," ", f.ULTIMO_NOME) AS NOME FROM tb_funcionario AS f
+WHERE f.CPF NOT IN (SELECT CPF_FUNCIONARIO FROM tb_dependente);
