@@ -10,8 +10,6 @@ JOIN tb_departamento AS d ON p.NUMERO_DEPARTAMENTO = d.NUMERO_DEPARTAMENTO
 JOIN tb_funcionario AS f ON d.CPF_GERENTE = f.CPF
 WHERE p.LOCAL_PROJETO = "Mauá";
 
-/*Descubra os nomes dos funcionários que trabalharam em todos os projetos controlados para o departamento número 5*/
-
 /*Liste o nome dos gerentes que possuem pelo menos um dependente.*/
 SELECT DISTINCT CONCAT(f.PRIMEIRO_NOME," ", f.ULTIMO_NOME) AS NOME FROM tb_funcionario AS f
 JOIN tb_departamento AS d ON f.CPF = d.CPF_GERENTE
