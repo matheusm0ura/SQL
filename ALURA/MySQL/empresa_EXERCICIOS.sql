@@ -29,3 +29,8 @@ WHERE f.ULTIMO_NOME = "Souza";
 /*Selecione todos os funcionários que não possuem dependentes.*/
 SELECT CONCAT(f.PRIMEIRO_NOME," ", f.ULTIMO_NOME) AS NOME FROM tb_funcionario AS f
 WHERE f.CPF NOT IN (SELECT CPF_FUNCIONARIO FROM tb_dependente);
+
+/*Selecione todos dependentes dos funcionários que são do sexo feminino.*/
+SELECT d.*, f.PRIMEIRO_NOME, f.ULTIMO_NOME FROM tb_dependente AS d 
+JOIN tb_funcionario AS f ON d.CPF_FUNCIONARIO = f.CPF
+WHERE f.SEXO = "F";
