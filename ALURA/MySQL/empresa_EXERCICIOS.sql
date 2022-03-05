@@ -1,5 +1,19 @@
 /*Recupere o nome e o endereço de todos os funcionários que trabalham para o departamento de pesquisa*/
-
 SELECT CONCAT(f.PRIMEIRO_NOME," ", f.ULTIMO_NOME) AS NOME, f.ENDERECO FROM tb_funcionario AS f
 JOIN tb_departamento AS d ON f.NUMERO_DEPARTAMENTO = d.NUMERO_DEPARTAMENTO
 WHERE d.NOME_DEPARTAMENTO = "Pesquisa";
+
+/*Para cada projeto localizado em Mauá vou liste o número do projeto, o número do departamento que controla 
+aquele projeto, e o último nome, endereço e data de nascimento do gerente do departamento.*/
+SELECT p.NUMERO_PROJETO, d.NUMERO_DEPARTAMENTO, f.ULTIMO_NOME, f.ENDERECO, f.DATA_NASCIMENTO FROM tb_projeto AS p
+JOIN tb_departamento AS d ON p.NUMERO_DEPARTAMENTO = d.NUMERO_DEPARTAMENTO
+JOIN tb_funcionario AS f ON d.CPF_GERENTE = f.CPF
+WHERE p.LOCAL_PROJETO = "Mauá";
+
+/*Descubra os nomes dos funcionários que trabalharam em todos os projetos controlados para o departamento número 5*/
+
+/*Liste o nome dos gerentes que possuem pelo menos um dependente.*/
+SELECT DISTINCT CONCAT(f.PRIMEIRO_NOME," ", f.ULTIMO_NOME) AS NOME FROM tb_funcionario AS f
+JOIN tb_departamento AS d ON f.CPF = d.CPF_GERENTE
+JOIN tb_dependente AS e ON d.CPF_GERENTE = e.CPF_FUNCIONARIO;
+
