@@ -17,3 +17,14 @@ SELECT DISTINCT CONCAT(f.PRIMEIRO_NOME," ", f.ULTIMO_NOME) AS NOME FROM tb_funci
 JOIN tb_departamento AS d ON f.CPF = d.CPF_GERENTE
 JOIN tb_dependente AS e ON d.CPF_GERENTE = e.CPF_FUNCIONARIO;
 
+/*Faça uma lista dos números dos projetos que envolvam funcionários cujo último nome seja Souza, seja ele como trabalhador 
+ou como gerente do departamento que controla o projeto*/
+SELECT t.NUMERO_PROJETO FROM tb_trabalha_em AS t
+JOIN tb_funcionario AS f ON f.CPF = t.CPF_FUNCIONARIO
+WHERE f.ULTIMO_NOME = "Souza"
+UNION
+SELECT p.NUMERO_PROJETO FROM tb_projeto AS p
+JOIN tb_departamento AS d ON d.NUMERO_DEPARTAMENTO = p.NUMERO_DEPARTAMENTO
+JOIN tb_funcionario AS f ON d.CPF_GERENTE = f.CPF
+WHERE f.ULTIMO_NOME = "Souza";
+
