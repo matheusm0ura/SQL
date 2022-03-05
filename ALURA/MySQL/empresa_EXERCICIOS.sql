@@ -40,3 +40,8 @@ trabalham mais de 10 horas por semana no projeto 10.*/
 SELECT CONCAT(f.PRIMEIRO_NOME,' ', f.NOME_MEIO,'. ', f.ULTIMO_NOME) AS NOME FROM tb_funcionario AS f
 JOIN tb_trabalha_em AS t ON f.CPF = t.CPF_FUNCIONARIO
 WHERE f.NUMERO_DEPARTAMENTO = 5 AND t.NUMERO_PROJETO = 10 AND t.HORAS >= 10;
+
+/*Liste os nomes dos projetos e dos nomes de gerentes que gerenciam os departamentos que controlam os projetos.*/
+SELECT p.NOME_PROJETO, CONCAT(f.PRIMEIRO_NOME," ", f.ULTIMO_NOME) AS NOME FROM tb_projeto AS p
+JOIN tb_departamento AS d USING(NUMERO_DEPARTAMENTO)
+JOIN tb_funcionario AS f ON d.CPF_GERENTE = f.CPF; 
